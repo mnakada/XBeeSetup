@@ -62,8 +62,9 @@ int XBeeSetup::Initialize(const char *device) {
     if(size < 0) return size;
     strcpy(NodeID, buf);
   }
-  if(mode == Mode_API) {
-    fprintf(stderr, "API mode\n");
+  if((mode == Mode_API) || (mode == Mode_API2)) {
+    if(mode == Mode_API) fprintf(stderr, "API mode\n");
+    if(mode == Mode_API2) fprintf(stderr, "API2 mode\n");
     unsigned char res[256];
     int size = XB.SendATCommand(0, "VR", NULL, 0, res, 256);
     if(size < 0) return size;
@@ -151,7 +152,7 @@ int XBeeSetup::Setup() {
       bdFlag = ((SetupTable[i].Cmd[2] < 6) ? 1200 : 900) << SetupTable[i].Cmd[2];
     }
     int mode = XB.GetMode();
-    if(mode == 1) {
+    if(mode == Mode_AT) {
       XB.SendText(buf);
       int size = XB.ReceiveText(buf, 256);
       if(size < 0) {
@@ -162,7 +163,7 @@ int XBeeSetup::Setup() {
       if(bdFlag && !strncmp((const char *)SetupTable[i].Cmd, "AC", 2) && !strcmp(buf, "OK")) {
         XB.SetBaudRate(bdFlag);
       }
-    } else if(mode == 2) {
+    } else if((mode == Mode_API) || (mode == Mode_API2)) {
       char cmd[256];
       unsigned char res[256];
       cmd[0] = SetupTable[i].Cmd[0];
