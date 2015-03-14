@@ -42,7 +42,7 @@ int XBee::Initialize(const char *device) {
     }
   }
   
-  Timeout = 200;
+  Timeout = 1000;
   int error = Error;
   BaudRate = B9600;
   if(SetBaudRate(BaudRate)) return Error;
