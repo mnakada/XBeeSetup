@@ -388,13 +388,13 @@ int XBee::ReceivePacket(unsigned char *buf) {
 
 int XBee::EnterBootMode() {
 
-  if(Mode == 3) return Success;
-  if(Mode == 1) {
+  if(Mode == Mode_Boot) return Success;
+  if(Mode == Mode_AT) {
     char buf[256];
     SendText("AT%P\r");
     int size = ReceiveText(buf, 256);
     if(size < 0) return size;
-  } else if(Mode == 2) {
+  } else if((Mode == Mode_API) || (Mode == Mode_API2)) {
     unsigned char res[256];
     int size = SendATCommand(0, "%P");
     if(size < 0) return size;

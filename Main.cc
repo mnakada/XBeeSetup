@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
   int error = 0;
   int config = 0;
   int device = 0;
+  int debug = 0;
   XBeeSetup XBeeSetup;
   for(int i = 1; i < argc; i++) {
     if(!strcmp(argv[i], "-f")) {
@@ -35,6 +36,10 @@ int main(int argc, char **argv) {
       device = i;
       continue;
     }
+    if(!strcmp(argv[i], "-debug")) {
+      debug = 1;
+      continue;
+    }
     error = Error;
   }
 
@@ -43,6 +48,8 @@ int main(int argc, char **argv) {
     return Error;
   }
 
+  if(debug) XBeeSetup.EnableLog();
+  
   error = XBeeSetup.ReadConfFile(argv[config]);
   if(error < 0) return error;
 

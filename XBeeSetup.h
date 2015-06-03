@@ -21,7 +21,7 @@ public:
   int FWUpdate();
   int Setup();
   void SetForceUpdate() { ForceUpdate = 1; }
-  
+  void EnableLog() { XB.EnableLog(); }
 private:
   int CheckVer();
 
