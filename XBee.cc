@@ -108,23 +108,32 @@ int XBee::SetBaudRate(int bps) {
 int XBee::CheckMode() {
   
   Mode = Mode_Unknown;
-  char buf[256];
-  SendText("+++");
-  int size = ReceiveText(buf, 256);
-  if((size == 2) && !strcmp(buf, "OK")) { // AT mode
-    Mode= Mode_AT;
-    SendText("ATVR\r");
-    size = ReceiveText(buf, 256);
-    if(size < 0) return size;
+
+  unsigned char retBuf[16];
+  int size = SendATCommand(0, "AP", NULL, 0, retBuf, 16);
+  if(size == 2) {
+    Mode = Mode_API;
+    if(retBuf[1] == 2) Mode = Mode_API2;
     return Success;
   }
-  
-  unsigned char retBuf[16];
-  size = SendATCommand(0, "AP", NULL, 0, retBuf, 16);
-  if(size != 2) return Error;
-  Mode = Mode_API;
-  if(retBuf[1] == 2) Mode = Mode_API2;
-  return Success;
+
+  char buf[256];
+  SendText("+++");
+  size = ReceiveText(buf, 256);
+  if((size == 2) && !strcmp(buf, "OK")) { // AT mode
+    Mode= Mode_AT;
+    SendText("ATAP\r");
+    size = ReceiveText(buf, 256);
+    if(size < 0) return size;
+fprintf(stderr, "ATAP %s\n", buf);
+    if(strncmp(buf, "0", 1)) return Success;
+    if(strncmp(buf, "1", 1)) Mode = Mode_API;
+    if(strncmp(buf, "1", 1)) Mode = Mode_API2;
+    SendText("ATCN\r");
+    size = ReceiveText(buf, 256);
+    if(size < 0) return size;
+  }
+  return Error;
 }
 
 int XBee::CheckBootMode() {

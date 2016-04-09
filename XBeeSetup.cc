@@ -101,8 +101,8 @@ int XBeeSetup::CheckVer() {
 
   if(XB.GetMode() == Mode_Boot) return Success;
   
-  if(((HWVer & 0xff00) != 0x1900) && ((HWVer & 0xff00) != 0x1A00)) {
-    fprintf(stderr, "Device Error : HWVer != 0x19xx/0x1axx\n");
+  if(((HWVer & 0xff00) != 0x1900) && ((HWVer & 0xff00) != 0x1A00) && ((HWVer & 0xff00) != 0x2e00)) {
+    fprintf(stderr, "Device Error : HWVer %04x != 0x19xx/0x1axx\n", HWVer);
     return Error;
   }
   char buf[256];
