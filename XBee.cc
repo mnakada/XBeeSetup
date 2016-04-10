@@ -125,10 +125,9 @@ int XBee::CheckMode() {
     SendText("ATAP\r");
     size = ReceiveText(buf, 256);
     if(size < 0) return size;
-fprintf(stderr, "ATAP %s\n", buf);
-    if(strncmp(buf, "0", 1)) return Success;
-    if(strncmp(buf, "1", 1)) Mode = Mode_API;
-    if(strncmp(buf, "1", 1)) Mode = Mode_API2;
+    if(!strncmp(buf, "0", 1)) return Success;
+    if(!strncmp(buf, "1", 1)) Mode = Mode_API;
+    if(!strncmp(buf, "2", 1)) Mode = Mode_API2;
     SendText("ATCN\r");
     size = ReceiveText(buf, 256);
     if(size < 0) return size;
