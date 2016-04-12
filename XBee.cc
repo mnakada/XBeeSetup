@@ -16,6 +16,15 @@
 #include "XBee.h"
 #include "Error.h"
 
+const XBee::BaudRateTableSt XBee::BaudRateTable[] =
+{
+  { B9600,   9600 },
+  { B19200,  19200 },
+  { B38400,  38400 },
+  { B57600,  57600 },
+  { B115200, 115200 },
+};
+
 XBee::XBee() {
 
   FrameID = 1;
@@ -42,29 +51,29 @@ int XBee::Initialize(const char *device) {
     }
   }
   
-  Timeout = 1000;
+  Timeout = 200;
   int error = Error;
-  BaudRate = B9600;
+  BaudRate = 9600;
   if(SetBaudRate(BaudRate)) return Error;
   error = CheckMode();
   if(error) {
-    BaudRate = B115200;
+    BaudRate = 115200;
     if(SetBaudRate(BaudRate)) return Error;
     error = CheckMode();
   }
   if(error) error = CheckBootMode();
   if(error) {
-    BaudRate = B38400;
+    BaudRate = 38400;
     if(SetBaudRate(BaudRate)) return Error;
     error = CheckMode();
   }
   if(error) {
-    BaudRate = B19200;
+    BaudRate = 19200;
     if(SetBaudRate(BaudRate)) return Error;
     error = CheckMode();
   }
   if(error) {
-    BaudRate = B57600;
+    BaudRate = 57600;
     if(SetBaudRate(BaudRate)) return Error;
     error = CheckMode();
   }
@@ -84,12 +93,18 @@ void XBee::Finalize() {
 }
 
 int XBee::SetBaudRate(int bps) {
-  
-  if(LogEnable) fprintf(stderr, "SetBaudRate %d\n", bps);
+
+  int baudrate = 0;
+  for(int i = 0; i < sizeof(BaudRateTable) / sizeof(BaudRateTableSt); i++) {
+    if(bps == BaudRateTable[i].BPS) baudrate = BaudRateTable[i].BaudRate;
+  }
+  if(LogEnable) fprintf(stderr, "SetBaudRate %d -> %d\n", bps, baudrate);
+  if(!baudrate) return Error;
+
   struct termios current_termios;
   tcgetattr(UartFd, &current_termios);
   cfmakeraw(&current_termios);
-  cfsetspeed(&current_termios, bps);
+  cfsetspeed(&current_termios, baudrate);
   current_termios.c_cflag &= ~(PARENB | PARODD);
   current_termios.c_cflag = (current_termios.c_cflag & ~CSIZE) | CS8;
   current_termios.c_cflag &= ~(CRTSCTS);
