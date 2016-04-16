@@ -1,0 +1,236 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		150B08FC1A88BA61002FD4DF /* raphaya_rp-1-cs.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "raphaya_rp-1-cs.conf"; sourceTree = "<group>"; };
+		150B08FD1A88BA81002FD4DF /* raphaya_ha-2-fc.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "raphaya_ha-2-fc.conf"; sourceTree = "<group>"; };
+		150B08FE1A88BAAA002FD4DF /* raphaya_rp-1-rir.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "raphaya_rp-1-rir.conf"; sourceTree = "<group>"; };
+		1520132319BD84F2000235D6 /* nakada_ha-2-fc.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_ha-2-fc.conf"; sourceTree = "<group>"; };
+		1520132419BD84F2000235D6 /* nakada_ha-2-sw.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_ha-2-sw.conf"; sourceTree = "<group>"; };
+		1520132519BD84F2000235D6 /* nakada_ha-2-swbox.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_ha-2-swbox.conf"; sourceTree = "<group>"; };
+		1520132619BD84F2000235D6 /* nakada_rp-1-cs.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_rp-1-cs.conf"; sourceTree = "<group>"; };
+		1520132719BD84F2000235D6 /* nakada_rp-1-rir.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_rp-1-rir.conf"; sourceTree = "<group>"; };
+		15A3380519405770005F6A78 /* coordinator.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coordinator.conf; sourceTree = "<group>"; };
+		15A3380619405770005F6A78 /* CRC.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CRC.cc; sourceTree = "<group>"; };
+		15A3380719405770005F6A78 /* CRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRC.h; sourceTree = "<group>"; };
+		15A3380819405770005F6A78 /* embutton.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = embutton.conf; sourceTree = "<group>"; };
+		15A3380919405770005F6A78 /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		15A3380A19405770005F6A78 /* Main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cc; sourceTree = "<group>"; };
+		15A3380B19405770005F6A78 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		15A3380F19405770005F6A78 /* router.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = router.conf; sourceTree = "<group>"; };
+		15A3381019405770005F6A78 /* test_coordinator.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_coordinator.conf; sourceTree = "<group>"; };
+		15A3381119405770005F6A78 /* test_router.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_router.conf; sourceTree = "<group>"; };
+		15A3381219405770005F6A78 /* XB24-ZB_20A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_20A7.ebl"; sourceTree = "<group>"; };
+		15A3381319405770005F6A78 /* XB24-ZB_21A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_21A7.ebl"; sourceTree = "<group>"; };
+		15A3381419405770005F6A78 /* XB24-ZB_22A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_22A7.ebl"; sourceTree = "<group>"; };
+		15A3381519405770005F6A78 /* XB24-ZB_23A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_23A7.ebl"; sourceTree = "<group>"; };
+		15A3381619405770005F6A78 /* XB24-ZB_28A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_28A7.ebl"; sourceTree = "<group>"; };
+		15A3381719405770005F6A78 /* XB24-ZB_29A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_29A7.ebl"; sourceTree = "<group>"; };
+		15A3381819405770005F6A78 /* XBee.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XBee.cc; sourceTree = "<group>"; };
+		15A3381919405770005F6A78 /* XBee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBee.h; sourceTree = "<group>"; };
+		15A3381B19405770005F6A78 /* XBeeSetup_ReadConfig.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XBeeSetup_ReadConfig.cc; sourceTree = "<group>"; };
+		15A3381C19405770005F6A78 /* XBeeSetup.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XBeeSetup.cc; sourceTree = "<group>"; };
+		15A3381D19405770005F6A78 /* XBeeSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBeeSetup.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		15A337FA19405705005F6A78 = {
+			isa = PBXGroup;
+			children = (
+				15A3380B19405770005F6A78 /* Makefile */,
+				15A3380A19405770005F6A78 /* Main.cc */,
+				15A3381B19405770005F6A78 /* XBeeSetup_ReadConfig.cc */,
+				15A3381C19405770005F6A78 /* XBeeSetup.cc */,
+				15A3381D19405770005F6A78 /* XBeeSetup.h */,
+				15A3381819405770005F6A78 /* XBee.cc */,
+				15A3381919405770005F6A78 /* XBee.h */,
+				15A3380619405770005F6A78 /* CRC.cc */,
+				15A3380719405770005F6A78 /* CRC.h */,
+				15A3380919405770005F6A78 /* Error.h */,
+				15A3380F19405770005F6A78 /* router.conf */,
+				15A3380819405770005F6A78 /* embutton.conf */,
+				15A3380519405770005F6A78 /* coordinator.conf */,
+				15A3381019405770005F6A78 /* test_coordinator.conf */,
+				15A3381119405770005F6A78 /* test_router.conf */,
+				15A3381219405770005F6A78 /* XB24-ZB_20A7.ebl */,
+				15A3381319405770005F6A78 /* XB24-ZB_21A7.ebl */,
+				15A3381419405770005F6A78 /* XB24-ZB_22A7.ebl */,
+				15A3381519405770005F6A78 /* XB24-ZB_23A7.ebl */,
+				15A3381619405770005F6A78 /* XB24-ZB_28A7.ebl */,
+				15A3381719405770005F6A78 /* XB24-ZB_29A7.ebl */,
+				1520132319BD84F2000235D6 /* nakada_ha-2-fc.conf */,
+				1520132419BD84F2000235D6 /* nakada_ha-2-sw.conf */,
+				1520132519BD84F2000235D6 /* nakada_ha-2-swbox.conf */,
+				1520132619BD84F2000235D6 /* nakada_rp-1-cs.conf */,
+				1520132719BD84F2000235D6 /* nakada_rp-1-rir.conf */,
+				150B08FC1A88BA61002FD4DF /* raphaya_rp-1-cs.conf */,
+				150B08FD1A88BA81002FD4DF /* raphaya_ha-2-fc.conf */,
+				150B08FE1A88BAAA002FD4DF /* raphaya_rp-1-rir.conf */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		15A337FF19405705005F6A78 /* build */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "";
+			buildConfigurationList = 15A3380219405705005F6A78 /* Build configuration list for PBXLegacyTarget "build" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = build;
+			passBuildSettingsInEnvironment = 1;
+			productName = XBeeSetup;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		15A337FB19405705005F6A78 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = nakada;
+			};
+			buildConfigurationList = 15A337FE19405705005F6A78 /* Build configuration list for PBXProject "XBeeSetup" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 15A337FA19405705005F6A78;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15A337FF19405705005F6A78 /* build */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		15A3380019405705005F6A78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		15A3380119405705005F6A78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		15A3380319405705005F6A78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		15A3380419405705005F6A78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15A337FE19405705005F6A78 /* Build configuration list for PBXProject "XBeeSetup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15A3380019405705005F6A78 /* Debug */,
+				15A3380119405705005F6A78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15A3380219405705005F6A78 /* Build configuration list for PBXLegacyTarget "build" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15A3380319405705005F6A78 /* Debug */,
+				15A3380419405705005F6A78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 15A337FB19405705005F6A78 /* Project object */;
+}
