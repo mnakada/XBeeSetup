@@ -119,32 +119,42 @@ int XBee::SetBaudRate(int bps) {
 }
 
 int XBee::CheckMode() {
-  
-  Mode = Mode_Unknown;
 
+  if(!LogEnable) fprintf(stderr, ".");
   int lastTimeout = Timeout;
   Timeout = 200;
   unsigned char retBuf[16];
+
+  Mode = Mode_API;
   int size = SendATCommand(0, "AP", NULL, 0, retBuf, 16);
   if(size == 2) {
-    Mode = Mode_API;
     if(retBuf[1] == 2) Mode = Mode_API2;
     Timeout = lastTimeout;
     return Success;
   }
+
+  Mode = Mode_API2;
+  size = SendATCommand(0, "AP", NULL, 0, retBuf, 16);
+  if(size == 2) {
+    if(retBuf[1] == 1) Mode = Mode_API;
+    Timeout = lastTimeout;
+    return Success;
+  }
+
+  Mode = Mode_Unknown;
   char buf[256];
+  Timeout = 1000;
   SendText("\r");
   size = ReceiveText(buf, 256);
   if(size > 0) sleep(1);
-  Timeout = 1000;
   SendText("+++");
   size = ReceiveText(buf, 256);
   Timeout = lastTimeout;
   if((size == 2) && !strcmp(buf, "OK")) { // AT mode
-    Mode= Mode_AT;
     SendText("ATAP\r");
     size = ReceiveText(buf, 256);
     if(size < 0) return size;
+    Mode = Mode_AT;
     if(!strncmp(buf, "0", 1)) return Success;
     if(!strncmp(buf, "1", 1)) Mode = Mode_API;
     if(!strncmp(buf, "2", 1)) Mode = Mode_API2;
