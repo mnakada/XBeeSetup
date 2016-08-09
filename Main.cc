@@ -20,6 +20,7 @@ int main(int argc, char **argv) {
   int config = 0;
   int device = 0;
   int debug = 0;
+  int reset = 0;
   XBeeSetup XBeeSetup;
   for(int i = 1; i < argc; i++) {
     if(!strcmp(argv[i], "-f")) {
@@ -36,19 +37,27 @@ int main(int argc, char **argv) {
       device = i;
       continue;
     }
+    if(!strcmp(argv[i], "-r")) {
+      reset = 1;
+      continue;
+    }
     if(!strcmp(argv[i], "-debug")) {
-      debug = 1;
+      XBeeSetup.EnableLog();
       continue;
     }
     error = Error;
   }
 
-  if(error || !config || !device) {
+  if(error || !device) {
     fprintf(stderr, "usage : %s [-f] -c <config file> -d <device file>\n", argv[0]);
     return Error;
   }
-
-  if(debug) XBeeSetup.EnableLog();
+  if(reset) return XBeeSetup.ResetBaudrate(argv[device]);
+  
+  if(!config) {
+    fprintf(stderr, "usage : %s [-f] -c <config file> -d <device file>\n", argv[0]);
+    return Error;
+  }
   
   error = XBeeSetup.ReadConfFile(argv[config]);
   if(error < 0) return error;

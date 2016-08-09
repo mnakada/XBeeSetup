@@ -50,7 +50,11 @@ int XBee::Initialize(const char *device) {
       return Error;
     }
   }
-  
+  return Success;
+}
+
+int XBee::SearchMode() {
+
   int error = Error;
   BaudRate = 9600;
   if(SetBaudRate(BaudRate)) return Error;

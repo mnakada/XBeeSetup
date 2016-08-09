@@ -20,8 +20,10 @@ public:
   void Finalize();
   int FWUpdate();
   int Setup();
+  int ResetBaudrate(const char *device);
   void SetForceUpdate() { ForceUpdate = 1; }
   void EnableLog() { XB.EnableLog(); }
+
 private:
   int CheckVer();
 

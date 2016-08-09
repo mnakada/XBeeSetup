@@ -24,6 +24,7 @@ public:
   ~XBee();
   
   int Initialize(const char *uart);
+  int SearchMode();
   void Finalize();
   
   int SendText(const char *buf);

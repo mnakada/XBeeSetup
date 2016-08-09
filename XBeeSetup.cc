@@ -32,7 +32,8 @@ XBeeSetup::~XBeeSetup() {
 int XBeeSetup::Initialize(const char *device) {
 
   if(int error = XB.Initialize(device)) return error;
-  
+  if(int error = XB.SearchMode()) return error;
+
   int mode = XB.GetMode();
   if(mode == Mode_Boot) {
     fprintf(stderr, "Boot mode\n");
@@ -199,6 +200,45 @@ int XBeeSetup::Setup() {
       }
     }
   }
+  return Success;
+}
+
+int XBeeSetup::ResetBaudrate(const char *device) {
+
+  if(int error = XB.Initialize(device)) return error;
+  XB.SetBaudRate(9600);
+  fprintf(stderr, "Press the break button for 10seconds.\n");
+
+  char buf[256];
+  while(1) {
+    int size = XB.ReceiveText(buf, 255);
+    if(size > 0) fprintf(stderr, "[%s]\n", buf);
+    if(size > 0) break;
+  }
+
+  fprintf(stderr, "Release the break button and press any key.\n");
+  fgetc(stdin);
+
+  XB.SetTimeout(500);
+  fprintf(stderr, "Send: ATBD 5\n");
+  XB.SendText("ATBD 5\r");
+  int size = XB.ReceiveText(buf, 255);
+  if(size < 0) {
+    fprintf(stderr, "-> Timeout Error\n");
+    return size;
+  }
+  fprintf(stderr, "Recv: %s\n", buf);
+
+  fprintf(stderr, "Send: ATWR\n");
+  XB.SendText("ATWR\r");
+  size = XB.ReceiveText(buf, 255);
+  if(size < 0) {
+    fprintf(stderr, "-> Timeout Error\n");
+    return size;
+  }
+  fprintf(stderr, "Recv: %s\n", buf);
+
+  XB.Finalize();  
   return Success;
 }
 
