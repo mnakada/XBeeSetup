@@ -162,6 +162,7 @@ int XBee::CheckMode() {
     if(!strncmp(buf, "0", 1)) return Success;
     if(!strncmp(buf, "1", 1)) Mode = Mode_API;
     if(!strncmp(buf, "2", 1)) Mode = Mode_API2;
+    if(!strncmp(buf, "ERROR", 5)) return Success;
     SendText("ATCN\r");
     size = ReceiveText(buf, 256);
     if(size < 0) return size;
@@ -441,8 +442,8 @@ int XBee::EnterBootMode() {
     int size = SendATCommand(0, "%P");
     if(size < 0) return size;
   }
-  if(int error = SetBaudRate(B115200)) return error;
-  sleep(2);
+  if(int error = SetBaudRate(115200)) return error;
+  sleep(3);
   return Success;
 }
 
@@ -450,7 +451,7 @@ int XBee::LeaveBootMode() {
 
   if(int error = CheckBootMode()) return error;
   SendText("2\r");
-  sleep(2);
+  sleep(3);
   return Success;
 }
 
