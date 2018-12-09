@@ -110,7 +110,7 @@ int XBeeSetup::CheckVer() {
     return Error;
   }
   char buf[256];
-  strcpy(buf, Firmware);
+  strcpy(buf, Firmware + strlen(Firmware) - 16);
   char *p = strtok(buf, "_.");
   p = strtok(NULL, "_.");
   unsigned int fw = strtoul(p, NULL, 16);

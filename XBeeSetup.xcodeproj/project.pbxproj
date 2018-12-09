@@ -7,30 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		150B08FC1A88BA61002FD4DF /* raphaya_rp-1-cs.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "raphaya_rp-1-cs.conf"; sourceTree = "<group>"; };
-		150B08FD1A88BA81002FD4DF /* raphaya_ha-2-fc.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "raphaya_ha-2-fc.conf"; sourceTree = "<group>"; };
-		150B08FE1A88BAAA002FD4DF /* raphaya_rp-1-rir.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "raphaya_rp-1-rir.conf"; sourceTree = "<group>"; };
-		1520132319BD84F2000235D6 /* nakada_ha-2-fc.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_ha-2-fc.conf"; sourceTree = "<group>"; };
-		1520132419BD84F2000235D6 /* nakada_ha-2-sw.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_ha-2-sw.conf"; sourceTree = "<group>"; };
-		1520132519BD84F2000235D6 /* nakada_ha-2-swbox.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_ha-2-swbox.conf"; sourceTree = "<group>"; };
-		1520132619BD84F2000235D6 /* nakada_rp-1-cs.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_rp-1-cs.conf"; sourceTree = "<group>"; };
-		1520132719BD84F2000235D6 /* nakada_rp-1-rir.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nakada_rp-1-rir.conf"; sourceTree = "<group>"; };
 		15A3380519405770005F6A78 /* coordinator.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coordinator.conf; sourceTree = "<group>"; };
 		15A3380619405770005F6A78 /* CRC.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CRC.cc; sourceTree = "<group>"; };
 		15A3380719405770005F6A78 /* CRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRC.h; sourceTree = "<group>"; };
-		15A3380819405770005F6A78 /* embutton.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = embutton.conf; sourceTree = "<group>"; };
 		15A3380919405770005F6A78 /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
 		15A3380A19405770005F6A78 /* Main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cc; sourceTree = "<group>"; };
 		15A3380B19405770005F6A78 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		15A3380F19405770005F6A78 /* router.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = router.conf; sourceTree = "<group>"; };
-		15A3381019405770005F6A78 /* test_coordinator.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_coordinator.conf; sourceTree = "<group>"; };
-		15A3381119405770005F6A78 /* test_router.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_router.conf; sourceTree = "<group>"; };
-		15A3381219405770005F6A78 /* XB24-ZB_20A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_20A7.ebl"; sourceTree = "<group>"; };
-		15A3381319405770005F6A78 /* XB24-ZB_21A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_21A7.ebl"; sourceTree = "<group>"; };
-		15A3381419405770005F6A78 /* XB24-ZB_22A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_22A7.ebl"; sourceTree = "<group>"; };
-		15A3381519405770005F6A78 /* XB24-ZB_23A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_23A7.ebl"; sourceTree = "<group>"; };
-		15A3381619405770005F6A78 /* XB24-ZB_28A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_28A7.ebl"; sourceTree = "<group>"; };
-		15A3381719405770005F6A78 /* XB24-ZB_29A7.ebl */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XB24-ZB_29A7.ebl"; sourceTree = "<group>"; };
 		15A3381819405770005F6A78 /* XBee.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XBee.cc; sourceTree = "<group>"; };
 		15A3381919405770005F6A78 /* XBee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBee.h; sourceTree = "<group>"; };
 		15A3381B19405770005F6A78 /* XBeeSetup_ReadConfig.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XBeeSetup_ReadConfig.cc; sourceTree = "<group>"; };
@@ -53,24 +36,7 @@
 				15A3380719405770005F6A78 /* CRC.h */,
 				15A3380919405770005F6A78 /* Error.h */,
 				15A3380F19405770005F6A78 /* router.conf */,
-				15A3380819405770005F6A78 /* embutton.conf */,
 				15A3380519405770005F6A78 /* coordinator.conf */,
-				15A3381019405770005F6A78 /* test_coordinator.conf */,
-				15A3381119405770005F6A78 /* test_router.conf */,
-				15A3381219405770005F6A78 /* XB24-ZB_20A7.ebl */,
-				15A3381319405770005F6A78 /* XB24-ZB_21A7.ebl */,
-				15A3381419405770005F6A78 /* XB24-ZB_22A7.ebl */,
-				15A3381519405770005F6A78 /* XB24-ZB_23A7.ebl */,
-				15A3381619405770005F6A78 /* XB24-ZB_28A7.ebl */,
-				15A3381719405770005F6A78 /* XB24-ZB_29A7.ebl */,
-				1520132319BD84F2000235D6 /* nakada_ha-2-fc.conf */,
-				1520132419BD84F2000235D6 /* nakada_ha-2-sw.conf */,
-				1520132519BD84F2000235D6 /* nakada_ha-2-swbox.conf */,
-				1520132619BD84F2000235D6 /* nakada_rp-1-cs.conf */,
-				1520132719BD84F2000235D6 /* nakada_rp-1-rir.conf */,
-				150B08FC1A88BA61002FD4DF /* raphaya_rp-1-cs.conf */,
-				150B08FD1A88BA81002FD4DF /* raphaya_ha-2-fc.conf */,
-				150B08FE1A88BAAA002FD4DF /* raphaya_rp-1-rir.conf */,
 			);
 			sourceTree = "<group>";
 		};
