@@ -27,11 +27,11 @@ int XBeeSetup::ReadConfFile(const char *file) {
     line++;
     char *p = strchr(buf, '#');
     if(p) *p = 0;
-    p = strtok(buf, " \t\r\n");
+    p = strtok(buf, ": \t\r\n");
     if(!p) continue;
 
-    if(!strcmp(p, "firmware:")) {
-      p = strtok(NULL, " \t\r\n");
+    if(!strcmp(p, "firmware")) {
+      p = strtok(NULL, ": \t\r\n");
       if(p) {
         strncpy(Firmware, p, 255);
         Firmware[255] = 0;
@@ -39,7 +39,7 @@ int XBeeSetup::ReadConfFile(const char *file) {
       continue;
     }
     
-    if(!strcmp(p, "setup:")) {
+    if(!strcmp(p, "setup")) {
       mode = 1;
       continue;
     }
@@ -53,7 +53,7 @@ int XBeeSetup::ReadConfFile(const char *file) {
       SetupTable[SetupTableMax].Cmd[1] = (unsigned char)toupper(p[1]);
       int c;
       for(c = 2; c < 256; c++) {
-        p = strtok(NULL, " \t\r\n");
+        p = strtok(NULL, ": \t\r\n");
         if(!p) break;
         SetupTable[SetupTableMax].Cmd[c] = strtoul(p, NULL, 16);
       }

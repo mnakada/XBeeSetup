@@ -125,7 +125,7 @@ int XBeeSetup::CheckVer() {
 int XBeeSetup::FWUpdate() {
 
   if(int error = CheckVer()) return error;
-  
+
   if(int error = XB.EnterBootMode()) return error;
   if(int error = XB.SendFirmware(Firmware)) return error;
   if(int error = XB.LeaveBootMode()) return error;
