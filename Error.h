@@ -1,5 +1,5 @@
 /*
- HA-1 Error.h
+ Error.h
  
  Copyright: Copyright (C) 2013,2014 Mitsuru Nakada All Rights Reserved.
  License: GNU GPL v2

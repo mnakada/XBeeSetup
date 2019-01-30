@@ -7,4 +7,5 @@ XBeeSetup
 # Xcode project files except for the project file
 *.xcodeproj/project.xcworkspace
 *.xcodeproj/xcuserdata
-
+ebl_files
+config
