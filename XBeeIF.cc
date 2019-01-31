@@ -542,7 +542,7 @@ int XBeeIF::ReadDeviceInfo() {
     DeviceInfo.HWVer = strtoul(buf, NULL, 16);
     SendText("ATVH\r");
     size = ReceiveText(buf, 256);
-    if((size < 4) || !strcmp(buf, "ERROR")) {
+    if((size < 3) || !strcmp(buf, "ERROR")) {
       DeviceInfo.BootVer = 0;
     } else {
       DeviceInfo.BootVer = strtoul(buf, NULL, 16);
@@ -861,6 +861,7 @@ int XBeeIF::SetupCommands(SetupTableSt *setupTable, int setupTableNum) {
   int lastTimeout = Timeout;
   Timeout = 5000;
   int bdFlag = 0;
+  int apFlag = 0;
   if(Mode == Mode_AT) {
     char buf[256];
     SendText("+++");
@@ -876,6 +877,9 @@ int XBeeIF::SetupCommands(SetupTableSt *setupTable, int setupTableNum) {
         return Error;
       }
       bdFlag = ((setupTable[i].Cmd[2] < 6) ? 1200 : 900) << setupTable[i].Cmd[2];
+    }
+    if(!strncmp((char *)setupTable[i].Cmd, "AP", 2)) {
+      if(setupTable[i].Size > 2) apFlag = setupTable[i].Cmd[2] + 1;
     }
 
     char sendBuf[256];
@@ -899,7 +903,12 @@ int XBeeIF::SetupCommands(SetupTableSt *setupTable, int setupTableNum) {
       fprintf(stderr, " -> %s\n", recvBuf);
       if(bdFlag && !strncmp((char *)setupTable[i].Cmd, "AC", 2) && !strcmp(recvBuf, "OK")) {
         SetBaudRate(bdFlag);
+        sleep(1);
       }
+      if(apFlag && !strncmp((char *)setupTable[i].Cmd, "AC", 2) && !strcmp(recvBuf, "OK")) {
+        Mode = apFlag;
+      }
+
     } else if((Mode == Mode_API) || (Mode == Mode_API2)) {
       byte res[256];
       int size = SendATCommand(0, (char *)setupTable[i].Cmd, setupTable[i].Cmd + 2, setupTable[i].Size - 2, res, 256);
@@ -931,10 +940,25 @@ int XBeeIF::SetupCommands(SetupTableSt *setupTable, int setupTableNum) {
       }
       fprintf(stderr, " -> OK\n");
       if(bdFlag) SetBaudRate(bdFlag);
+      if(apFlag) {
+        Mode = apFlag;
+        if(Mode == Mode_AT) {
+          Timeout = 200;
+          SendText("\r");
+          sleep(2);
+          while(GetByte() >= 0);
+          Timeout = 5000;
+          char buf[256];
+          SendText("+++");
+          int size = ReceiveText(buf, 256);
+          if((size != 2) || strcmp(buf, "OK")) return Error;
+        }
+      }
     } else {
       return Error;
     }
     bdFlag = 0;
+    apFlag = 0;
   }
   Timeout = lastTimeout;
   return Success;

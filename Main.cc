@@ -76,40 +76,20 @@ int main(int argc, char **argv) {
 
   XBeeIF::DevInfo devInfo;
   error = XB.GetDeviceInfo(&devInfo);
+  fprintf(stderr, "Baudrate : %d\n", XB.GetBaudRate());
   if(!error) {
-    fprintf(stderr, "Baudrate : %d\n", XB.GetBaudRate());
     fprintf(stderr, "FirmwareVersion : %04x\n", devInfo.FWVer);
     fprintf(stderr, "HardwareVersion : %04x\n", devInfo.HWVer);
     fprintf(stderr, "BootVersion     : %04x\n", devInfo.BootVer);
     fprintf(stderr, "SerialNumber    : %08x-%08x\n", devInfo.SerialHi, devInfo.SerialLo);
     fprintf(stderr, "NodeIdentifier  : %s\n", devInfo.NodeID);
   }
+  error = Success;
 
   if(config || setupCmdNum) {
     XBeeIF::SetupTableSt setupTable[256];
     int setupTableSize = 0;
     char buf[256];
-    for(int i = 0; i < setupCmdNum; i++) {
-      if(setupTableSize > 255) {
-        error = 1;
-        break;
-      }
-      strcpy(buf, argv[setupCmds[i]]);
-      char *p = strtok(buf, ": \t\r\n");
-      if(!p) {
-        fprintf(stderr, "setup parapeter error\n");
-        return Error;
-      }
-      setupTable[setupTableSize].Cmd[0] = (unsigned char)toupper(p[0]);
-      setupTable[setupTableSize].Cmd[1] = (unsigned char)toupper(p[1]);
-      int c;
-      for(c = 2; c < 256; c++) {
-        p = strtok(NULL, ": \t\r\n");
-        if(!p) break;
-        setupTable[setupTableSize].Cmd[c] = strtoul(p, NULL, 16);
-      }
-      setupTable[setupTableSize++].Size = c;
-    }
     char firmware[256] = "";
     FILE *fp = fopen(argv[config], "r");
     if(fp == NULL) return Error;
@@ -146,6 +126,7 @@ int main(int argc, char **argv) {
         }
         setupTable[setupTableSize].Cmd[0] = (unsigned char)toupper(p[0]);
         setupTable[setupTableSize].Cmd[1] = (unsigned char)toupper(p[1]);
+        if(!strncmp((char *)setupTable[setupTableSize].Cmd, "WR", 2)) continue;
         int c;
         for(c = 2; c < 256; c++) {
           p = strtok(NULL, ": \t\r\n");
@@ -156,6 +137,31 @@ int main(int argc, char **argv) {
       }
     }
     fclose(fp);
+    for(int i = 0; i < setupCmdNum; i++) {
+      if(setupTableSize > 255) {
+        error = 1;
+        break;
+      }
+      strcpy(buf, argv[setupCmds[i]]);
+      char *p = strtok(buf, ": \t\r\n");
+      if(!p) {
+        fprintf(stderr, "setup parapeter error\n");
+        return Error;
+      }
+      setupTable[setupTableSize].Cmd[0] = (unsigned char)toupper(p[0]);
+      setupTable[setupTableSize].Cmd[1] = (unsigned char)toupper(p[1]);
+      if(!strncmp((char *)setupTable[setupTableSize].Cmd, "WR", 2)) continue;
+      int c;
+      for(c = 2; c < 256; c++) {
+        p = strtok(NULL, ": \t\r\n");
+        if(!p) break;
+        setupTable[setupTableSize].Cmd[c] = strtoul(p, NULL, 16);
+      }
+      setupTable[setupTableSize++].Size = c;
+    }
+    setupTable[setupTableSize].Cmd[0] = (unsigned char)'W';
+    setupTable[setupTableSize].Cmd[1] = (unsigned char)'R';
+    setupTable[setupTableSize++].Size = 2;
 
     if(error) {
       fprintf(stderr, "Error : Config format error\n ---> line%d,mode%d: %s\n", line, mode, buf);
@@ -182,7 +188,11 @@ int main(int argc, char **argv) {
     }
     if(error >= 0) {
       error = XB.SetupCommands(setupTable, setupTableSize);
-      if(!error) fprintf(stderr, "Complete.\n");
+      if(error) {
+        fprintf(stderr, "Setup commands error\n");
+      } else {
+        fprintf(stderr, "Complete.\n");
+      }
     }
   }
 
