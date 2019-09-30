@@ -255,6 +255,7 @@ int XBeeIF::CheckMode() {
   SendText("\r");
   size = ReceiveText(buf, 256);
   if(size > 0) sleep(1);
+  ReceiveText(buf, 256);
   SendText("+++");
   size = ReceiveText(buf, 256);
   Timeout = lastTimeout;
@@ -262,6 +263,10 @@ int XBeeIF::CheckMode() {
     SendText("ATAP\r");
     size = ReceiveText(buf, 256);
     if(size < 0) return size;
+    if(!strcmp(buf, "OK")) {
+      size = ReceiveText(buf, 256);
+      if(size < 0) return size;
+    }
     Mode = Mode_Unknown;
     if(!strncmp(buf, "0", 1)) Mode = Mode_AT;
     if(!strncmp(buf, "1", 1)) Mode = Mode_API;
