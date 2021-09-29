@@ -216,6 +216,7 @@ int XBeeIF::SetBaudRate(int bps) {
   current_termios.c_cflag = (current_termios.c_cflag & ~CSIZE) | CS8;
   current_termios.c_cflag &= ~(CRTSCTS);
   current_termios.c_iflag &= ~(IXON | IXOFF | IXANY);
+  current_termios.c_cflag |= CLOCAL;
   current_termios.c_cflag &= ~(HUPCL);
   if(int error = tcsetattr(Fd, TCSAFLUSH, &current_termios)) {
     fprintf(stderr, "tcsetattr error %d\n", baudrate);
