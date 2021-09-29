@@ -13,7 +13,7 @@ XBEE_S2B_ENDPOINT_API=XB24-ZB_29A7.ebl
 XBEE_S2C_FILE=XB24-s2c_4060_82004138.zip
 XBEE_S2C=xb24c-s2c_4060.ebl
 XBEE_S3_FILE=XB3-24Z_100B.zip
-XBEE_S3=XB3-24Z_100b.gbl
+XBEE_S3=XB3-24Z_100B.gbl
 XBEE_S3_BOOT_FILE=xb3-boot-rf_1.8.1.zip
 XBEE_S3_BOOT=xb3-boot-rf_1.8.1.gbl
 XBEE_EBL_FILES= \
@@ -42,7 +42,7 @@ ifeq (${target_os},Darwin)
 endif
 LD_FLAGS = ${LIBS}
 
-all: ${ebl_files} $(target_program)
+all: ebl_files $(target_program)
 
 $(target_program) : $(cc_srcs) $(cc_header)
 	g++ $(CC_FLAGS) $(LIBS) -Wno-deprecated-declarations -o $@ $(cc_srcs)
